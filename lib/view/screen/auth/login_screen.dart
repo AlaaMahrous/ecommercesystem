@@ -1,3 +1,4 @@
+import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -6,6 +7,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(backgroundColor: AppColours.white);
   }
 }

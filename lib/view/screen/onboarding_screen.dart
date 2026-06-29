@@ -28,11 +28,7 @@ class OnboardingScreen extends GetView<OnboardingControllerImpl> {
               const SizedBox(height: 35),
               Text(
                 onboarding[i].title!,
-                style: const TextStyle(
-                  fontFamily: 'Cairo',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(height: 70),
               Image.asset(
@@ -45,13 +41,7 @@ class OnboardingScreen extends GetView<OnboardingControllerImpl> {
               Text(
                 onboarding[i].body!,
                 textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontFamily: 'Cairo',
-                  fontWeight: FontWeight.bold,
-                  height: 2,
-                  color: AppColours.grey,
-                  fontSize: 17,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               const SizedBox(height: 25),
               InkWell(

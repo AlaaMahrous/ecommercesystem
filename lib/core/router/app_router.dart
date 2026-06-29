@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
+import 'package:ecommercesystem/view/screen/language_screen.dart';
 import 'package:ecommercesystem/view/screen/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,7 +8,7 @@ class AppRouter {
 
   static Future<void> init() async {
     router = GoRouter(
-      initialLocation: OnboardingScreen.path,
+      initialLocation: LanguageScreen.path,
       routes: [
         GoRoute(
           path: OnboardingScreen.path,
@@ -16,6 +17,10 @@ class AppRouter {
         GoRoute(
           path: LoginScreen.path,
           builder: (context, state) => const LoginScreen(),
+        ),
+        GoRoute(
+          path: LanguageScreen.path,
+          builder: (context, state) => const LanguageScreen(),
         ),
       ],
     );
