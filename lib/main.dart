@@ -42,6 +42,11 @@ class MyApp extends StatelessWidget {
 
   ThemeData appThemeData() => ThemeData(
     textTheme: const TextTheme(
+      titleLarge: TextStyle(
+        fontFamily: 'Cairo',
+        fontWeight: FontWeight.bold,
+        fontSize: 25,
+      ),
       headlineLarge: TextStyle(
         fontFamily: 'Cairo',
         fontWeight: FontWeight.bold,
@@ -52,7 +57,7 @@ class MyApp extends StatelessWidget {
         fontWeight: FontWeight.bold,
         height: 2,
         color: AppColours.grey,
-        fontSize: 17,
+        fontSize: 15.5,
       ),
     ),
   );
