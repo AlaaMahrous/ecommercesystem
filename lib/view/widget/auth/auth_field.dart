@@ -6,16 +6,17 @@ class AuthField extends StatelessWidget {
     required this.label,
     required this.hint,
     required this.icon,
+    required this.myController,
   });
   final String label;
   final String hint;
   final Widget icon;
-  //final TextEditingController myController;
+  final TextEditingController myController;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      //controller: myController,
+      controller: myController,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,

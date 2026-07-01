@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
       bodyLarge: TextStyle(
         fontFamily: 'Cairo',
         fontWeight: FontWeight.bold,
-        height: 2,
+        height: 1.5,
         color: AppColours.grey,
         fontSize: 15.5,
       ),

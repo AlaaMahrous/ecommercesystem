@@ -1,27 +1,32 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
-import 'package:ecommercesystem/view/screen/auth/signup_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
-import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-  static const String path = '/LoginScreen';
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+  static const String path = '/SignupScreen';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   TextEditingController email = TextEditingController();
+
   TextEditingController password = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController username = TextEditingController();
+
   @override
   void dispose() {
     email.dispose();
     password.dispose();
+    phone.dispose();
+    username.dispose();
     super.dispose();
   }
 
@@ -46,23 +51,37 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 36),
             child: Column(
               children: [
-                const LogoAuthImage(),
+                const SizedBox(height: 15),
                 Text(
                   "Welcome Back",
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "Sign in with your email and password\nor continue with social media",
+                  "Create your account to start shopping\nor continue with social media",
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
+                AuthField(
+                  myController: username,
+                  label: 'Username',
+                  hint: 'Enter Your Username',
+                  icon: const HugeIcon(icon: HugeIcons.strokeRoundedUser),
+                ),
+                const SizedBox(height: 25),
                 AuthField(
                   myController: email,
                   label: 'Email',
                   hint: 'Enter Your Email',
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
+                ),
+                const SizedBox(height: 25),
+                AuthField(
+                  myController: phone,
+                  label: 'Phone',
+                  hint: 'Enter Your Phone',
+                  icon: const HugeIcon(icon: HugeIcons.strokeRoundedAiPhone01),
                 ),
                 const SizedBox(height: 25),
                 AuthField(
@@ -72,26 +91,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 40),
-                const Align(
-                  alignment: AlignmentGeometry.centerEnd,
-                  child: Text(
-                    'Forget Password',
-                    style: TextStyle(color: AppColours.grey),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                CustomAuthButtom(onPressed: () {}, text: 'Sign In'),
-                const SizedBox(height: 50),
+                CustomAuthButtom(onPressed: () {}, text: 'Sign Up'),
+                const SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Don\'t have an account? '),
+                    const Text('Already have an account? '),
                     InkWell(
                       onTap: () {
-                        context.push(SignupScreen.path);
+                        context.pop(LoginScreen.path);
                       },
                       child: const Text(
-                        'Sign Up',
+                        'Sign In',
                         style: TextStyle(
                           color: AppColours.pPurple,
                           fontWeight: FontWeight.bold,
