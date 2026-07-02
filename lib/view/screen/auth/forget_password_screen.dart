@@ -1,8 +1,10 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/view/screen/auth/verify_code_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
 class ForgetPasswordScreen extends StatefulWidget {
@@ -28,13 +30,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       appBar: AppBar(
         backgroundColor: AppColours.white,
         surfaceTintColor: Colors.transparent,
-        centerTitle: true,
-        title: Text(
-          "", //Forget Password
-          style: Theme.of(
-            context,
-          ).textTheme.headlineLarge!.copyWith(color: AppColours.grey),
-        ),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -63,7 +58,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 const SizedBox(height: 40),
                 CustomAuthButtom(
                   onPressed: () {
-                    //context.push('');
+                    context.push(VerifyCodeScreen.path);
                   },
                   text: 'Send Reset Code',
                 ),
