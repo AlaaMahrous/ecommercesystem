@@ -1,5 +1,8 @@
+import 'package:ecommercesystem/view/screen/auth/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/reset_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/signup_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/verify_code_screen.dart';
 import 'package:ecommercesystem/view/screen/language_screen.dart';
 import 'package:ecommercesystem/view/screen/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -26,6 +29,18 @@ class AppRouter {
         GoRoute(
           path: SignupScreen.path,
           builder: (context, state) => const SignupScreen(),
+        ),
+        GoRoute(
+          path: ForgetPasswordScreen.path,
+          builder: (context, state) => const ForgetPasswordScreen(),
+        ),
+        GoRoute(
+          path: VerifyCodeScreen.path,
+          builder: (context, state) => const VerifyCodeScreen(),
+        ),
+        GoRoute(
+          path: ResetPasswordScreen.path,
+          builder: (context, state) => const ResetPasswordScreen(),
         ),
       ],
     );

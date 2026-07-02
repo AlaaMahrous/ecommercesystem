@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/signup_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
@@ -72,11 +73,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 40),
-                const Align(
+                Align(
                   alignment: AlignmentGeometry.centerEnd,
-                  child: Text(
-                    'Forget Password',
-                    style: TextStyle(color: AppColours.grey),
+                  child: InkWell(
+                    onTap: () {
+                      context.push(ForgetPasswordScreen.path);
+                    },
+                    child: const Text(
+                      'Forget Password',
+                      style: TextStyle(color: AppColours.grey),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
