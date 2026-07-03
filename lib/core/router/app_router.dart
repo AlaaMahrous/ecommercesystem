@@ -1,3 +1,4 @@
+import 'package:ecommercesystem/view/screen/auth/check_email_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/reset_password_screen.dart';
@@ -51,6 +52,10 @@ class AppRouter {
         GoRoute(
           path: SuccessSignupScreen.path,
           builder: (context, state) => const SuccessSignupScreen(),
+        ),
+        GoRoute(
+          path: CheckEmailScreen.path,
+          builder: (context, state) => const CheckEmailScreen(),
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/view/screen/auth/check_email_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
@@ -39,7 +40,7 @@ class _SignupScreenState extends State<SignupScreen> {
         surfaceTintColor: Colors.transparent,
         centerTitle: true,
         title: Text(
-          "Sign In",
+          "Sign Up",
           style: Theme.of(
             context,
           ).textTheme.headlineLarge!.copyWith(color: AppColours.grey),
@@ -91,7 +92,12 @@ class _SignupScreenState extends State<SignupScreen> {
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 40),
-                CustomAuthButtom(onPressed: () {}, text: 'Sign Up'),
+                CustomAuthButtom(
+                  onPressed: () {
+                    context.go(CheckEmailScreen.path);
+                  },
+                  text: 'Sign Up',
+                ),
                 const SizedBox(height: 35),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
