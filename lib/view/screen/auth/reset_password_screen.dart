@@ -4,6 +4,7 @@ import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -41,28 +42,25 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text(
-                  "Reset Password",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                Text("27".tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  "Create a new password for your account. Make sure it's strong and easy for you to remember",
+                  '28'.tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
                 AuthField(
                   myController: password,
-                  label: 'Password',
-                  hint: 'Enter Your Password',
+                  label: '20'.tr,
+                  hint: '21'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 25),
                 AuthField(
                   myController: repassword,
-                  label: 'Password',
-                  hint: 'Re Enter Your Password',
+                  label: '20'.tr,
+                  hint: '29'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 40),
@@ -70,7 +68,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   onPressed: () {
                     context.push(SuccessResetScreen.path);
                   },
-                  text: 'Save',
+                  text: '30'.tr,
                 ),
               ],
             ),

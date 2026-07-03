@@ -1,4 +1,3 @@
-import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/localization/app_translation.dart';
 import 'package:ecommercesystem/core/localization/localization_controller.dart';
 import 'package:ecommercesystem/core/router/app_router.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
       builder: (controller) {
         return GetMaterialApp.router(
           debugShowCheckedModeBanner: false,
-          theme: appThemeData(),
+          theme: controller.appTheme,
           translations: AppTranslation(),
           locale: controller.language,
           routeInformationProvider: AppRouter.router.routeInformationProvider,
@@ -39,26 +38,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-
-  ThemeData appThemeData() => ThemeData(
-    textTheme: const TextTheme(
-      titleLarge: TextStyle(
-        fontFamily: 'Cairo',
-        fontWeight: FontWeight.bold,
-        fontSize: 25,
-      ),
-      headlineLarge: TextStyle(
-        fontFamily: 'Cairo',
-        fontWeight: FontWeight.bold,
-        fontSize: 20,
-      ),
-      bodyLarge: TextStyle(
-        fontFamily: 'Cairo',
-        fontWeight: FontWeight.bold,
-        height: 1.5,
-        color: AppColours.grey,
-        fontSize: 15.5,
-      ),
-    ),
-  );
 }

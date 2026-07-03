@@ -5,6 +5,7 @@ import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -35,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
         surfaceTintColor: Colors.transparent,
         centerTitle: true,
         title: Text(
-          "Sign In",
+          '22'.tr,
           style: Theme.of(
             context,
           ).textTheme.headlineLarge!.copyWith(color: AppColours.grey),
@@ -48,28 +49,25 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text(
-                  "Welcome Back",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                Text('12'.tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  "Sign in with your email and password\nor continue with social media",
+                  '24'.tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
                 AuthField(
                   myController: email,
-                  label: 'Email',
-                  hint: 'Enter Your Email',
+                  label: '16'.tr,
+                  hint: '17'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
                 ),
                 const SizedBox(height: 25),
                 AuthField(
                   myController: password,
-                  label: 'Password',
-                  hint: 'Enter Your Password',
+                  label: '20'.tr,
+                  hint: '21'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 40),
@@ -79,26 +77,26 @@ class _LoginScreenState extends State<LoginScreen> {
                     onTap: () {
                       context.push(ForgetPasswordScreen.path);
                     },
-                    child: const Text(
-                      'Forget Password',
-                      style: TextStyle(color: AppColours.grey),
+                    child: Text(
+                      '25'.tr,
+                      style: const TextStyle(color: AppColours.grey),
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
-                CustomAuthButtom(onPressed: () {}, text: 'Sign In'),
+                CustomAuthButtom(onPressed: () {}, text: '22'.tr),
                 const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Don\'t have an account? '),
+                    Text('26'.tr),
                     InkWell(
                       onTap: () {
                         context.push(SignupScreen.path);
                       },
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
+                      child: Text(
+                        '11'.tr,
+                        style: const TextStyle(
                           color: AppColours.pPurple,
                           fontWeight: FontWeight.bold,
                         ),

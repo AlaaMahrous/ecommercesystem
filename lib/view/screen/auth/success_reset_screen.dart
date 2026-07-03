@@ -1,6 +1,7 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 
 class SuccessResetScreen extends StatelessWidget {
@@ -31,9 +32,9 @@ class SuccessResetScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              const Text(
-                "Password Reset Successful!",
-                style: TextStyle(
+              Text(
+                '9'.tr,
+                style: const TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
@@ -41,7 +42,7 @@ class SuccessResetScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                "Your password has been reset successfully.\nYou can now sign in using your new password.",
+                '10'.tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
@@ -64,9 +65,9 @@ class SuccessResetScreen extends StatelessWidget {
                     ),
                     elevation: 0,
                   ),
-                  child: const Text(
-                    "Continue",
-                    style: TextStyle(
+                  child: Text(
+                    '8'.tr,
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,

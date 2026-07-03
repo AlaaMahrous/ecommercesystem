@@ -1,6 +1,7 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 
 class SuccessSignupScreen extends StatelessWidget {
@@ -32,9 +33,9 @@ class SuccessSignupScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              const Text(
-                "Account Created!",
-                style: TextStyle(
+              Text(
+                "6".tr,
+                style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.black87,
@@ -42,7 +43,7 @@ class SuccessSignupScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               Text(
-                "Your account has been created successfully.\nLet's start exploring amazing products!",
+                "7".tr,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
@@ -65,9 +66,9 @@ class SuccessSignupScreen extends StatelessWidget {
                     ),
                     elevation: 0,
                   ),
-                  child: const Text(
-                    "Continue",
-                    style: TextStyle(
+                  child: Text(
+                    "8".tr,
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,

@@ -4,6 +4,7 @@ import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -38,21 +39,18 @@ class _ForgetPasswordScreenState extends State<CheckEmailScreen> {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text(
-                  "Check Email",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                Text("33".tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  "Please Enter Your Email Address to Recive A verification code",
+                  '34'.tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
                 AuthField(
                   myController: email,
-                  label: 'Email',
-                  hint: 'Enter Your Email',
+                  label: '16'.tr,
+                  hint: '17'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
                 ),
                 const SizedBox(height: 40),
@@ -60,7 +58,7 @@ class _ForgetPasswordScreenState extends State<CheckEmailScreen> {
                   onPressed: () {
                     context.push(SuccessSignupScreen.path);
                   },
-                  text: 'Check',
+                  text: '5'.tr,
                 ),
               ],
             ),

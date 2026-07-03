@@ -28,20 +28,28 @@ class OnboardingScreen extends GetView<OnboardingControllerImpl> {
               const SizedBox(height: 35),
               Text(
                 onboarding[i].title!,
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
               const SizedBox(height: 70),
               Image.asset(
                 onboarding[i].imageUrl!,
                 width: 230,
-                height: 250,
+                height: 250, //Get.width / 1.2,
                 fit: BoxFit.fill,
               ),
               const SizedBox(height: 56),
               Text(
                 onboarding[i].body!,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  height: 1.5,
+                  color: AppColours.grey,
+                  fontSize: 15.5,
+                ),
               ),
               const SizedBox(height: 25),
               InkWell(
@@ -64,10 +72,10 @@ class OnboardingScreen extends GetView<OnboardingControllerImpl> {
                     color: Color.fromARGB(255, 244, 244, 244),
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
-                      'Skip',
-                      style: TextStyle(
+                      '2'.tr,
+                      style: const TextStyle(
                         fontFamily: 'Cairo',
                         fontWeight: FontWeight.bold,
                         fontSize: 15.5,

@@ -4,6 +4,7 @@ import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
@@ -38,21 +39,18 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text(
-                  "Forget Password",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                Text("25".tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  "Enter the email associated with your account, we'll send you a password reset code",
+                  '31'.tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
                 AuthField(
                   myController: email,
-                  label: 'Email',
-                  hint: 'Enter Your Email',
+                  label: '16'.tr,
+                  hint: '17'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
                 ),
                 const SizedBox(height: 40),
@@ -60,7 +58,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   onPressed: () {
                     context.push(VerifyCodeScreen.path);
                   },
-                  text: 'Send Reset Code',
+                  text: '32'.tr,
                 ),
               ],
             ),

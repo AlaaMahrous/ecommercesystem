@@ -4,6 +4,7 @@ import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 
 class VerifyCodeScreen extends StatelessWidget {
@@ -25,13 +26,10 @@ class VerifyCodeScreen extends StatelessWidget {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text(
-                  "Check Code",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+                Text("3".tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  "We've sent a verification code to your email. Enter it below to continue",
+                  "4".tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
@@ -52,7 +50,7 @@ class VerifyCodeScreen extends StatelessWidget {
                   onPressed: () {
                     context.push(ResetPasswordScreen.path);
                   },
-                  text: 'Check',
+                  text: '5'.tr,
                 ),
               ],
             ),
