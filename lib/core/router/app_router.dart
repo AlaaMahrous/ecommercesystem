@@ -1,11 +1,12 @@
-import 'package:ecommercesystem/view/screen/auth/check_email_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/forget_password_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/check_email_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/reset_password_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/signup_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/success_reset_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/success_signup_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/verify_code_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password/reset_password_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/signup_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password/success_reset_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/success_signup_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password/verify_code_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/verify_code_signup_screen.dart';
 import 'package:ecommercesystem/view/screen/language_screen.dart';
 import 'package:ecommercesystem/view/screen/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -40,6 +41,10 @@ class AppRouter {
         GoRoute(
           path: VerifyCodeScreen.path,
           builder: (context, state) => const VerifyCodeScreen(),
+        ),
+        GoRoute(
+          path: VerifyCodeSignupScreen.path,
+          builder: (context, state) => const VerifyCodeSignupScreen(),
         ),
         GoRoute(
           path: ResetPasswordScreen.path,

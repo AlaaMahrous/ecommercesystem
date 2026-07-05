@@ -1,6 +1,6 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
-import 'package:ecommercesystem/view/screen/auth/forget_password_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/signup_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password/forget_password_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/signup_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';

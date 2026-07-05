@@ -1,5 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
-import 'package:ecommercesystem/view/screen/auth/success_reset_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/forget_password/verify_code_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
@@ -8,22 +8,19 @@ import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class ResetPasswordScreen extends StatefulWidget {
-  const ResetPasswordScreen({super.key});
-  static const String path = '/ResetPasswordScreen';
+class ForgetPasswordScreen extends StatefulWidget {
+  const ForgetPasswordScreen({super.key});
+  static const String path = '/ForgetPasswordScreen';
 
   @override
-  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
+  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
 }
 
-class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  TextEditingController password = TextEditingController();
-  TextEditingController repassword = TextEditingController();
-
+class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
+  TextEditingController email = TextEditingController();
   @override
   void dispose() {
-    password.dispose();
-    repassword.dispose();
+    email.dispose();
     super.dispose();
   }
 
@@ -42,33 +39,26 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text("27".tr, style: Theme.of(context).textTheme.titleLarge),
+                Text("25".tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  '28'.tr,
+                  '31'.tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
                 AuthField(
-                  myController: password,
-                  label: '20'.tr,
-                  hint: '21'.tr,
-                  icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
-                ),
-                const SizedBox(height: 25),
-                AuthField(
-                  myController: repassword,
-                  label: '20'.tr,
-                  hint: '29'.tr,
-                  icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
+                  myController: email,
+                  label: '16'.tr,
+                  hint: '17'.tr,
+                  icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
                 ),
                 const SizedBox(height: 40),
                 CustomAuthButtom(
                   onPressed: () {
-                    context.push(SuccessResetScreen.path);
+                    context.push(VerifyCodeScreen.path);
                   },
-                  text: '30'.tr,
+                  text: '32'.tr,
                 ),
               ],
             ),

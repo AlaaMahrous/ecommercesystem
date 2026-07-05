@@ -1,15 +1,28 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
-import 'package:ecommercesystem/view/screen/auth/reset_password_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/verify_code_signup_screen.dart';
+import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hugeicons/hugeicons.dart';
 
-class VerifyCodeScreen extends StatelessWidget {
-  const VerifyCodeScreen({super.key});
-  static const String path = '/VerifyCodeScreen';
+class CheckEmailScreen extends StatefulWidget {
+  const CheckEmailScreen({super.key});
+  static const String path = '/CheckEmailScreen';
+
+  @override
+  State<CheckEmailScreen> createState() => _ForgetPasswordScreenState();
+}
+
+class _ForgetPasswordScreenState extends State<CheckEmailScreen> {
+  TextEditingController email = TextEditingController();
+  @override
+  void dispose() {
+    email.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,29 +39,24 @@ class VerifyCodeScreen extends StatelessWidget {
             child: Column(
               children: [
                 const LogoAuthImage(),
-                Text("3".tr, style: Theme.of(context).textTheme.titleLarge),
+                Text("33".tr, style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 10),
                 Text(
-                  "4".tr,
+                  '34'.tr,
                   style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 40),
-                OtpTextField(
-                  numberOfFields: 5,
-                  fieldWidth: 45,
-                  disabledBorderColor: AppColours.grey,
-                  borderColor: AppColours.pPurple,
-                  showFieldAsBox: true,
-                  onCodeChanged: (String code) {},
-                  onSubmit: (String verificationCode) {
-                    context.push(ResetPasswordScreen.path);
-                  },
+                AuthField(
+                  myController: email,
+                  label: '16'.tr,
+                  hint: '17'.tr,
+                  icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
                 ),
                 const SizedBox(height: 40),
                 CustomAuthButtom(
                   onPressed: () {
-                    context.push(ResetPasswordScreen.path);
+                    context.push(VerifyCodeSignupScreen.path);
                   },
                   text: '5'.tr,
                 ),

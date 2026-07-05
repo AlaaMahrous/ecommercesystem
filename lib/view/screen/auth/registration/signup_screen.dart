@@ -1,5 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
-import 'package:ecommercesystem/view/screen/auth/check_email_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/check_email_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
