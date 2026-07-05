@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/core/functions/input_validator.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/success_reset_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
@@ -19,6 +20,8 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController password = TextEditingController();
   TextEditingController repassword = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
 
   @override
   void dispose() {
@@ -37,6 +40,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
+          autovalidateMode: _autovalidateMode,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 36),
             child: Column(
@@ -51,6 +56,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 30, "password");
+                  },
                   myController: password,
                   label: '20'.tr,
                   hint: '21'.tr,
@@ -58,23 +66,32 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 30, "password");
+                  },
                   myController: repassword,
                   label: '20'.tr,
                   hint: '29'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedLock),
                 ),
                 const SizedBox(height: 40),
-                CustomAuthButtom(
-                  onPressed: () {
-                    context.push(SuccessResetScreen.path);
-                  },
-                  text: '30'.tr,
-                ),
+                CustomAuthButtom(onPressed: check, text: '30'.tr),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void check() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context.push(SuccessResetScreen.path);
+    } else {
+      setState(() {
+        _autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }

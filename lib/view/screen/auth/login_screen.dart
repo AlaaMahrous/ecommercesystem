@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/core/functions/input_validator.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/registration/signup_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
@@ -20,6 +21,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   @override
   void dispose() {
     email.dispose();
@@ -44,6 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
+          autovalidateMode: _autovalidateMode,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 36),
             child: Column(
@@ -58,6 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 100, "email");
+                  },
                   myController: email,
                   label: '16'.tr,
                   hint: '17'.tr,
@@ -65,6 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 30, "password");
+                  },
                   myController: password,
                   label: '20'.tr,
                   hint: '21'.tr,
@@ -84,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 10),
-                CustomAuthButtom(onPressed: () {}, text: '22'.tr),
+                CustomAuthButtom(onPressed: logInMethod, text: '22'.tr),
                 const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -110,5 +121,15 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void logInMethod() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+    } else {
+      setState(() {
+        _autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }

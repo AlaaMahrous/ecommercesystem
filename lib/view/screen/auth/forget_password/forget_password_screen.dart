@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/core/functions/input_validator.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/verify_code_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
@@ -18,6 +19,9 @@ class ForgetPasswordScreen extends StatefulWidget {
 
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   TextEditingController email = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+
   @override
   void dispose() {
     email.dispose();
@@ -34,6 +38,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
+          autovalidateMode: _autovalidateMode,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 36),
             child: Column(
@@ -48,23 +54,32 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 100, "email");
+                  },
                   myController: email,
                   label: '16'.tr,
                   hint: '17'.tr,
                   icon: const HugeIcon(icon: HugeIcons.strokeRoundedMail01),
                 ),
                 const SizedBox(height: 40),
-                CustomAuthButtom(
-                  onPressed: () {
-                    context.push(VerifyCodeScreen.path);
-                  },
-                  text: '32'.tr,
-                ),
+                CustomAuthButtom(onPressed: check, text: '32'.tr),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void check() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context.push(VerifyCodeScreen.path);
+    } else {
+      setState(() {
+        _autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/core/functions/input_validator.dart';
 import 'package:ecommercesystem/view/screen/auth/registration/check_email_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
@@ -18,10 +19,11 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   TextEditingController email = TextEditingController();
-
   TextEditingController password = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController username = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
 
   @override
   void dispose() {
@@ -49,6 +51,8 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _formKey,
+          autovalidateMode: _autovalidateMode,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 36),
             child: Column(
@@ -63,6 +67,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 30),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 30, "username");
+                  },
                   myController: username,
                   label: '14'.tr,
                   hint: '15'.tr,
@@ -70,6 +77,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 100, "email");
+                  },
                   myController: email,
                   label: '16'.tr,
                   hint: '17'.tr,
@@ -77,6 +87,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 11, 20, "phone");
+                  },
                   myController: phone,
                   label: '18'.tr,
                   hint: '19'.tr,
@@ -84,6 +97,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  validator: (val) {
+                    return inputValidator(val!, 5, 30, "password");
+                  },
                   myController: password,
                   label: '20'.tr,
                   hint: '21'.tr,
@@ -92,7 +108,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 const SizedBox(height: 40),
                 CustomAuthButtom(
                   onPressed: () {
-                    context.go(CheckEmailScreen.path);
+                    signUpMethod();
                   },
                   text: '11'.tr,
                 ),
@@ -121,5 +137,16 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+  }
+
+  void signUpMethod() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context.go(CheckEmailScreen.path);
+    } else {
+      setState(() {
+        _autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }
