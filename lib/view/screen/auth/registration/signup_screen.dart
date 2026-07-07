@@ -24,6 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController username = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+  bool obscure = true;
 
   @override
   void dispose() {
@@ -100,6 +101,12 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  onTapIcon: () {
+                    setState(() {
+                      obscure = !obscure;
+                    });
+                  },
+                  obscureText: obscure,
                   keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");

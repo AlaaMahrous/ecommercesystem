@@ -22,6 +22,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   TextEditingController repassword = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
+  bool obscure1 = true;
+  bool obscure2 = true;
 
   @override
   void dispose() {
@@ -56,6 +58,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  onTapIcon: () {
+                    setState(() {
+                      obscure1 = !obscure1;
+                    });
+                  },
+                  obscureText: obscure1,
                   keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");
@@ -67,6 +75,12 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  onTapIcon: () {
+                    setState(() {
+                      obscure2 = !obscure2;
+                    });
+                  },
+                  obscureText: obscure2,
                   keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");
