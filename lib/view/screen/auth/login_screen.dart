@@ -63,6 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  keyboardType: TextInputType.emailAddress,
                   validator: (val) {
                     return inputValidator(val!, 5, 100, "email");
                   },
@@ -73,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");
                   },

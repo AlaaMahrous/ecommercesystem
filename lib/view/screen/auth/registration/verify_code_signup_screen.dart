@@ -42,7 +42,7 @@ class VerifyCodeSignupScreen extends StatelessWidget {
                   showFieldAsBox: true,
                   onCodeChanged: (String code) {},
                   onSubmit: (String verificationCode) {
-                    context.push(SuccessSignupScreen.path);
+                    //context.push(SuccessSignupScreen.path);
                   },
                 ),
                 const SizedBox(height: 40),

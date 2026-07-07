@@ -56,6 +56,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");
                   },
@@ -66,6 +67,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");
                   },

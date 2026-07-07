@@ -1,7 +1,7 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/functions/input_validator.dart';
-import 'package:ecommercesystem/view/screen/auth/registration/check_email_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/verify_code_signup_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:flutter/material.dart';
@@ -67,6 +67,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 30),
                 AuthField(
+                  keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "username");
                   },
@@ -77,6 +78,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  keyboardType: TextInputType.emailAddress,
                   validator: (val) {
                     return inputValidator(val!, 5, 100, "email");
                   },
@@ -87,6 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  keyboardType: TextInputType.phone,
                   validator: (val) {
                     return inputValidator(val!, 11, 20, "phone");
                   },
@@ -97,6 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 AuthField(
+                  keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 30, "password");
                   },
@@ -142,7 +146,7 @@ class _SignupScreenState extends State<SignupScreen> {
   void signUpMethod() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      context.go(CheckEmailScreen.path);
+      context.go(VerifyCodeSignupScreen.path);
     } else {
       setState(() {
         _autovalidateMode = AutovalidateMode.always;

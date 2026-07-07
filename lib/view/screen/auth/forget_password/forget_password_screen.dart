@@ -54,6 +54,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 ),
                 const SizedBox(height: 40),
                 AuthField(
+                  keyboardType: TextInputType.text,
                   validator: (val) {
                     return inputValidator(val!, 5, 100, "email");
                   },
