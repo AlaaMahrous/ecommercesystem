@@ -1,11 +1,11 @@
 import 'package:ecommercesystem/controller/onboarding_controller.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/core/services/settings_service.dart';
 import 'package:ecommercesystem/data/datasource/static/static.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:ecommercesystem/view/widget/onboarding/circular_arrow_progress.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class OnboardingScreen extends GetView<OnboardingControllerImpl> {
   const OnboardingScreen({super.key});
@@ -62,8 +62,9 @@ class OnboardingScreen extends GetView<OnboardingControllerImpl> {
               ),
               const SizedBox(height: 25),
               InkWell(
-                onTap: () {
-                  context.go(LoginScreen.path);
+                onTap: () async {
+                  await SettingsService.setOnboardingCompleted(true);
+                  Get.offNamed(LoginScreen.path);
                 },
                 child: Container(
                   width: 65,

@@ -1,5 +1,6 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/localization/localization_controller.dart';
+import 'package:ecommercesystem/core/services/settings_service.dart';
 import 'package:ecommercesystem/view/screen/onboarding_screen.dart';
 import 'package:ecommercesystem/view/widget/language/lang_button.dart';
 import 'package:flutter/material.dart';
@@ -25,16 +26,20 @@ class LanguageScreen extends GetView<LocalizationController> {
             const SizedBox(height: 5),
             LangButton(
               text: 'Ar',
-              onPressed: () {
+              onPressed: () async {
                 controller.changeLang("ar");
-                context.go(OnboardingScreen.path);
+                final goRouter = GoRouter.of(context);
+                await SettingsService.setLanguageSelected(true);
+                goRouter.go(OnboardingScreen.path);
               },
             ),
             LangButton(
               text: 'En',
-              onPressed: () {
+              onPressed: () async {
                 controller.changeLang("en");
-                context.go(OnboardingScreen.path);
+                final goRouter = GoRouter.of(context);
+                await SettingsService.setLanguageSelected(true);
+                goRouter.go(OnboardingScreen.path);
               },
             ),
           ],

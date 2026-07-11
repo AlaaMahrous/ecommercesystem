@@ -1,7 +1,9 @@
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/functions/input_validator.dart';
+import 'package:ecommercesystem/core/services/settings_service.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/registration/signup_screen.dart';
+import 'package:ecommercesystem/view/screen/home_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
@@ -135,6 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
   void logInMethod() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+      await SettingsService.setLoggedIn(true);
+      if (mounted) {
+        context.push(HomeScreen.path);
+      }
     } else {
       setState(() {
         _autovalidateMode = AutovalidateMode.always;

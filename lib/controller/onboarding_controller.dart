@@ -1,3 +1,4 @@
+import 'package:ecommercesystem/core/services/settings_service.dart';
 import 'package:ecommercesystem/data/datasource/static/static.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,10 @@ class OnboardingControllerImpl extends OnboardingController {
   }
 
   @override
-  void next(BuildContext context) {
+  void next(BuildContext context) async {
     currentPage++;
     if (currentPage > onboarding.length - 1) {
+      await SettingsService.setOnboardingCompleted(true);
       context.go(LoginScreen.path);
     } else {
       pageController.animateToPage(
