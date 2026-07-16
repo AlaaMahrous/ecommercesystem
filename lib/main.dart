@@ -1,3 +1,4 @@
+import 'package:ecommercesystem/core/bindings/initialbinding.dart';
 import 'package:ecommercesystem/core/localization/app_translation.dart';
 import 'package:ecommercesystem/core/localization/localization_controller.dart';
 import 'package:ecommercesystem/core/router/app_router.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           theme: controller.appTheme,
           translations: AppTranslation(),
           locale: controller.language,
+          initialBinding: InitialBinding(),
           routeInformationProvider: AppRouter.router.routeInformationProvider,
           routeInformationParser: AppRouter.router.routeInformationParser,
           routerDelegate: AppRouter.router.routerDelegate,

@@ -7,15 +7,31 @@ import 'dart:async';
 import 'dart:io';
 
 class Crud {
-  Future<Either<StatusRequest, Map>> postData(String linkurl, Map data) async {
+  Future<Either<StatusRequest, Map>> postData(String url, Map data) async {
+    return _request(() => http.post(Uri.parse(url), body: data));
+  }
+
+  Future<Either<StatusRequest, Map>> getData(String url) async {
+    return _request(() => http.get(Uri.parse(url)));
+  }
+
+  Future<Either<StatusRequest, Map>> putData(String url, Map data) async {
+    return _request(() => http.put(Uri.parse(url), body: data));
+  }
+
+  Future<Either<StatusRequest, Map>> deleteData(String url) async {
+    return _request(() => http.delete(Uri.parse(url)));
+  }
+
+  Future<Either<StatusRequest, Map>> _request(
+    Future<http.Response> Function() request,
+  ) async {
     if (!await checkInternet()) {
       return const Left(StatusRequest.offlinefailure);
     }
 
     try {
-      final response = await http
-          .post(Uri.parse(linkurl), body: data)
-          .timeout(const Duration(seconds: 30));
+      final response = await request().timeout(const Duration(seconds: 30));
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         final body = response.body.isNotEmpty ? jsonDecode(response.body) : {};
