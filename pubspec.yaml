@@ -17,6 +17,7 @@ dependencies:
   http: ^1.6.0
   hugeicons: ^1.1.7
   lottie: ^3.5.1
+  modal_progress_hud_nsn: ^0.5.1
   shared_preferences: ^2.5.5
 
 dev_dependencies:
