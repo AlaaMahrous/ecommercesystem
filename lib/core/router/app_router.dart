@@ -40,8 +40,11 @@ class AppRouter {
           builder: (context, state) => const ForgetPasswordScreen(),
         ),
         GoRoute(
-          path: VerifyCodeScreen.path,
-          builder: (context, state) => const VerifyCodeScreen(),
+          path: VerifyCodeResetScreen.path,
+          builder: (context, state) {
+            final email = state.extra as String;
+            return VerifyCodeResetScreen(email: email);
+          },
         ),
         GoRoute(
           path: VerifyCodeSignupScreen.path,
@@ -49,7 +52,10 @@ class AppRouter {
         ),
         GoRoute(
           path: ResetPasswordScreen.path,
-          builder: (context, state) => const ResetPasswordScreen(),
+          builder: (context, state) {
+            final email = state.extra as String;
+            return ResetPasswordScreen(email: email);
+          },
         ),
         GoRoute(
           path: SuccessResetScreen.path,
