@@ -1,11 +1,13 @@
+import 'dart:developer';
+
 import 'package:ecommercesystem/core/class/status_request.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/functions/handling_data.dart';
 import 'package:ecommercesystem/core/functions/input_validator.dart';
 import 'package:ecommercesystem/data/datasource/remote/auth/signup_data.dart';
+import 'package:ecommercesystem/view/screen/auth/registration/success_signup_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
-import 'package:ecommercesystem/view/screen/auth/registration/verify_code_signup_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:flutter/material.dart';
@@ -172,11 +174,12 @@ class _SignupScreenState extends State<SignupScreen> {
         email.text,
         phone.text,
       );
+      log("============== Controller $response");
       statusRequest = handlingData(response);
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           if (!mounted) return;
-          context.go(VerifyCodeSignupScreen.path);
+          context.go(SuccessSignupScreen.path);
         } else {
           if (!mounted) return;
 
