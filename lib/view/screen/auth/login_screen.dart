@@ -12,6 +12,7 @@ import 'package:ecommercesystem/view/screen/home_screen.dart';
 import 'package:ecommercesystem/view/widget/auth/auth_field.dart';
 import 'package:ecommercesystem/view/widget/auth/custom_auth_buttom.dart';
 import 'package:ecommercesystem/view/widget/auth/logo_auth_image.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -34,6 +35,17 @@ class _LoginScreenState extends State<LoginScreen> {
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   LoginData loginData = LoginData(Get.find());
   bool obscure = true;
+
+  @override
+  void initState() {
+    FirebaseMessaging.instance.getToken().then((value) {
+      if (value != null) {
+        log('FCM token: $value');
+      }
+    });
+    super.initState();
+  }
+
   @override
   void dispose() {
     email.dispose();

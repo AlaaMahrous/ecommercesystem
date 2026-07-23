@@ -97,7 +97,22 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     obscureText: obscure2,
                     keyboardType: TextInputType.text,
                     validator: (val) {
-                      return inputValidator(val!, 5, 30, "password");
+                      final validation = inputValidator(
+                        val!,
+                        5,
+                        30,
+                        "password",
+                      );
+
+                      if (validation != null) {
+                        return validation;
+                      }
+
+                      if (val != password.text) {
+                        return "Passwords do not match";
+                      }
+
+                      return null;
                     },
                     myController: repassword,
                     label: '20'.tr,
@@ -118,20 +133,45 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   void check() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
+      if (password.text != repassword.text) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text("Warning"),
+              content: const Text("Passwords do not match"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
       setState(() {
         statusRequest = StatusRequest.loading;
       });
+
       var response = await resetpasswordData.postData(
         widget.email,
         password.text,
       );
+
       log("============== Controller $response");
+
       statusRequest = handlingData(response);
+
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
-          if (mounted) {
-            context.push(SuccessResetScreen.path);
-          }
+          if (!mounted) return;
+          context.push(SuccessResetScreen.path);
         } else {
           if (!mounted) return;
 
@@ -140,7 +180,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             builder: (context) {
               return AlertDialog(
                 title: const Text("Warning"),
-                content: const Text("Email or password not correct"),
+                content: const Text("Try Again"),
                 actions: [
                   TextButton(
                     onPressed: () {
@@ -157,6 +197,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             statusRequest = StatusRequest.failure;
           });
         }
+      } else {
+        setState(() {
+          statusRequest = StatusRequest.failure;
+        });
       }
     } else {
       setState(() {
