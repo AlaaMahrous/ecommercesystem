@@ -1,5 +1,6 @@
 import 'package:ecommercesystem/controller/home_controller.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
+import 'package:ecommercesystem/view/widget/home/cash_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -13,38 +14,44 @@ class HomeScreen extends StatelessWidget {
     HomeControllerImp controller = Get.put(HomeControllerImp());
     return Scaffold(
       backgroundColor: AppColours.white,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-        child: ListView(
-          children: [
-            Row(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            child: Column(
+              spacing: 10,
               children: [
-                Expanded(
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "Find Product",
-                      hintStyle: const TextStyle(color: Colors.grey),
-                      prefixIcon: const Icon(Icons.search, size: 29),
-                      prefixIconColor: Colors.grey,
-                      border: const OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          hintText: "Find Product",
+                          hintStyle: const TextStyle(color: Colors.grey),
+                          prefixIcon: const Icon(Icons.search, size: 29),
+                          prefixIconColor: Colors.grey,
+                          border: const OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[200],
+                        ),
                       ),
-                      filled: true,
-                      fillColor: Colors.grey[200],
                     ),
-                  ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const HugeIcon(
+                        icon: HugeIcons.strokeRoundedNotification01,
+                        size: 27,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const HugeIcon(
-                    icon: HugeIcons.strokeRoundedNotification01,
-                    size: 27,
-                  ),
-                ),
+                const CashCard(),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
