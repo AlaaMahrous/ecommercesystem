@@ -4,6 +4,7 @@ import 'package:ecommercesystem/core/class/status_request.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/functions/handling_data.dart';
 import 'package:ecommercesystem/core/functions/input_validator.dart';
+import 'package:ecommercesystem/core/services/services.dart';
 import 'package:ecommercesystem/core/services/settings_service.dart';
 import 'package:ecommercesystem/data/datasource/remote/auth/login_data.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/forget_password_screen.dart';
@@ -34,6 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
   StatusRequest statusRequest = StatusRequest.initial;
   AutovalidateMode _autovalidateMode = AutovalidateMode.disabled;
   LoginData loginData = LoginData(Get.find());
+  Services services = Get.find();
   bool obscure = true;
 
   @override
@@ -172,6 +174,22 @@ class _LoginScreenState extends State<LoginScreen> {
       if (StatusRequest.success == statusRequest) {
         if (response['status'] == "success") {
           await SettingsService.setLoggedIn(true);
+          services.sharedPreferences.setString(
+            "id",
+            "${response['data']['user_id']}",
+          );
+          services.sharedPreferences.setString(
+            "user_name",
+            response['data']['user_name'],
+          );
+          services.sharedPreferences.setString(
+            "email",
+            response['data']['user_email'],
+          );
+          services.sharedPreferences.setString(
+            "phone",
+            response['data']['user_phone'],
+          );
           if (mounted) {
             context.push(HomeScreen.path);
           }
