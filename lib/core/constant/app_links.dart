@@ -11,4 +11,7 @@ class AppLinks {
   static const String resetpassword =
       "$server/forgetpassword/resetpassword.php";
   static const String verifycodereset = "$server/forgetpassword/verifycode.php";
+
+  //================ Categories ==================//
+  static const String categoriesview = "$server/categories/view.php";
 }

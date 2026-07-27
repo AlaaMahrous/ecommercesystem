@@ -1,12 +1,25 @@
+import 'dart:developer';
+
+import 'package:ecommercesystem/core/class/status_request.dart';
+import 'package:ecommercesystem/core/functions/handling_data.dart';
 import 'package:ecommercesystem/core/services/services.dart';
+import 'package:ecommercesystem/data/datasource/remote/home/categories.dart';
+import 'package:ecommercesystem/data/model/category_model.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {}
+abstract class HomeController extends GetxController {
+  void initialData();
+  Future<void> getCategoriesData();
+}
 
 class HomeControllerImp extends HomeController {
+  CategoriesData categoriesData = CategoriesData(Get.find());
+  StatusRequest statusRequest = StatusRequest.initial;
   Services services = Get.find();
+  late List<CategoryModel> categoryList;
   String? username;
 
+  @override
   void initialData() {
     username = services.sharedPreferences.getString("user_name");
   }
@@ -15,5 +28,21 @@ class HomeControllerImp extends HomeController {
   void onInit() {
     initialData();
     super.onInit();
+  }
+
+  @override
+  Future<void> getCategoriesData() async {
+    statusRequest = StatusRequest.loading;
+    var response = await categoriesData.postData();
+    log("============== Controller $response");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        categoryList = (response['data'] as List)
+            .map((e) => CategoryModel.fromJson(e))
+            .toList();
+      }
+    }
+    update();
   }
 }
