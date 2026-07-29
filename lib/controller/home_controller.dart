@@ -16,7 +16,7 @@ class HomeControllerImp extends HomeController {
   CategoriesData categoriesData = CategoriesData(Get.find());
   StatusRequest statusRequest = StatusRequest.initial;
   Services services = Get.find();
-  late List<CategoryModel> categoryList;
+  List<CategoryModel> categoryList = [];
   String? username;
 
   @override
@@ -27,12 +27,14 @@ class HomeControllerImp extends HomeController {
   @override
   void onInit() {
     initialData();
+    getCategoriesData();
     super.onInit();
   }
 
   @override
   Future<void> getCategoriesData() async {
     statusRequest = StatusRequest.loading;
+    await Future.delayed(const Duration(seconds: 2));
     var response = await categoriesData.postData();
     log("============== Controller $response");
     statusRequest = handlingData(response);
