@@ -9,15 +9,15 @@ class CategoriesVew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 102,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
         itemBuilder: (context, index) {
           final category = categories[index];
 
-          return SizedBox(
-            width: 90,
+          return Padding(
+            padding: const EdgeInsets.only(right: 25, left: 4),
             child: Column(
               children: [
                 Container(

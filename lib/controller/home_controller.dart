@@ -10,6 +10,7 @@ import 'package:get/get.dart';
 abstract class HomeController extends GetxController {
   void initialData();
   Future<void> getCategoriesData();
+  Future<void> getItemsData();
 }
 
 class HomeControllerImp extends HomeController {
@@ -33,6 +34,23 @@ class HomeControllerImp extends HomeController {
 
   @override
   Future<void> getCategoriesData() async {
+    statusRequest = StatusRequest.loading;
+    await Future.delayed(const Duration(seconds: 2));
+    var response = await categoriesData.postData();
+    log("============== Controller $response");
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        categoryList = (response['data'] as List)
+            .map((e) => CategoryModel.fromJson(e))
+            .toList();
+      }
+    }
+    update();
+  }
+
+  @override
+  Future<void> getItemsData() async {
     statusRequest = StatusRequest.loading;
     await Future.delayed(const Duration(seconds: 2));
     var response = await categoriesData.postData();

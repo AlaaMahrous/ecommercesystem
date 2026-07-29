@@ -29,6 +29,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: Column(
                     spacing: 10.5,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -61,6 +62,15 @@ class HomeScreen extends StatelessWidget {
                       ),
                       const CashCard(),
                       CategoriesVew(categories: controller.categoryList),
+                      const Text(
+                        '  Product For You',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 19,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      //ItemsView(items: ),
                     ],
                   ),
                 ),
