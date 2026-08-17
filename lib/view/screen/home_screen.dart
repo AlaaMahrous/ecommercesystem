@@ -3,6 +3,7 @@ import 'package:ecommercesystem/core/class/handling_data_view.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/view/widget/home/cash_card.dart';
 import 'package:ecommercesystem/view/widget/home/categories_vew.dart';
+import 'package:ecommercesystem/view/widget/home/items_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hugeicons/hugeicons.dart';
@@ -20,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: AppColours.white,
           body: SafeArea(
             child: HandlingDataView(
-              statusRequest: controller.statusRequest,
+              statusRequest: controller.itStatusRequest,
               widget: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
@@ -70,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      //ItemsView(items: ),
+                      ItemsView(items: controller.itemsList),
                     ],
                   ),
                 ),

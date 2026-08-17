@@ -36,7 +36,7 @@ class CategoriesVew extends StatelessWidget {
                   ),
 
                   child: Padding(
-                    padding: const EdgeInsets.all(13.5),
+                    padding: const EdgeInsets.all(14.5),
                     child: Image.asset(
                       '${AppImages.imagesRoot}/${category.categoryImage}',
 

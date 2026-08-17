@@ -1,5 +1,5 @@
 class AppLinks {
-  static const String server = "http://192.168.1.4/ecommerce";
+  static const String server = "http://192.168.1.6/ecommerce";
 
   //================ Auth ==================//
   static const String signup = "$server/auth/signup.php";
@@ -14,4 +14,7 @@ class AppLinks {
 
   //================ Categories ==================//
   static const String categoriesview = "$server/categories/view.php";
+
+  //================ Items ==================//
+  static const String itemsview = "$server/items/view.php";
 }
