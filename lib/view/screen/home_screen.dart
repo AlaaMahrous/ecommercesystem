@@ -3,10 +3,10 @@ import 'package:ecommercesystem/core/class/handling_data_view.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/view/widget/home/cash_card.dart';
 import 'package:ecommercesystem/view/widget/home/categories_vew.dart';
+import 'package:ecommercesystem/view/widget/home/custom_app_bar.dart';
 import 'package:ecommercesystem/view/widget/home/items_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hugeicons/hugeicons.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -32,35 +32,7 @@ class HomeScreen extends StatelessWidget {
                     spacing: 10.5,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                hintText: "Find Product",
-                                hintStyle: const TextStyle(color: Colors.grey),
-                                prefixIcon: const Icon(Icons.search, size: 29),
-                                prefixIconColor: Colors.grey,
-                                border: const OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
-                                ),
-                                filled: true,
-                                fillColor: Colors.grey[200],
-                              ),
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const HugeIcon(
-                              icon: HugeIcons.strokeRoundedNotification01,
-                              size: 27,
-                            ),
-                          ),
-                        ],
-                      ),
+                      const CustomAppBar(),
                       const CashCard(),
                       CategoriesVew(categories: controller.categoryList),
                       const Text(
