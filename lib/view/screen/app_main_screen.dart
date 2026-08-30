@@ -31,11 +31,23 @@ class AppMainScreen extends StatelessWidget {
                 onPressed: () {
                   controller.changePage(0);
                 },
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-                    Text('Home'),
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedHome01,
+                      color: controller.currentPage == 0
+                          ? AppColours.pPurple
+                          : AppColours.grey,
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(
+                        color: controller.currentPage == 0
+                            ? AppColours.pPurple
+                            : AppColours.grey,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -44,11 +56,23 @@ class AppMainScreen extends StatelessWidget {
                 onPressed: () {
                   controller.changePage(1);
                 },
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-                    Text('Home'),
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedSettings01,
+                      color: controller.currentPage == 1
+                          ? AppColours.pPurple
+                          : AppColours.grey,
+                    ),
+                    Text(
+                      'Settings',
+                      style: TextStyle(
+                        color: controller.currentPage == 1
+                            ? AppColours.pPurple
+                            : AppColours.grey,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -57,11 +81,23 @@ class AppMainScreen extends StatelessWidget {
                 onPressed: () {
                   controller.changePage(2);
                 },
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-                    Text('Home'),
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedProfile,
+                      color: controller.currentPage == 2
+                          ? AppColours.pPurple
+                          : AppColours.grey,
+                    ),
+                    Text(
+                      'Profile',
+                      style: TextStyle(
+                        color: controller.currentPage == 2
+                            ? AppColours.pPurple
+                            : AppColours.grey,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -70,11 +106,23 @@ class AppMainScreen extends StatelessWidget {
                 onPressed: () {
                   controller.changePage(3);
                 },
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    HugeIcon(icon: HugeIcons.strokeRoundedHome01),
-                    Text('Home'),
+                    HugeIcon(
+                      icon: HugeIcons.strokeRoundedMailLove01,
+                      color: controller.currentPage == 3
+                          ? AppColours.pPurple
+                          : AppColours.grey,
+                    ),
+                    Text(
+                      'Favorite',
+                      style: TextStyle(
+                        color: controller.currentPage == 3
+                            ? AppColours.pPurple
+                            : AppColours.grey,
+                      ),
+                    ),
                   ],
                 ),
               ),
