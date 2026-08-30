@@ -1,4 +1,5 @@
 import 'package:ecommercesystem/core/services/settings_service.dart';
+import 'package:ecommercesystem/data/model/category_model.dart';
 import 'package:ecommercesystem/view/screen/app_main_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/forget_password_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/login_screen.dart';
@@ -9,6 +10,7 @@ import 'package:ecommercesystem/view/screen/auth/registration/success_signup_scr
 import 'package:ecommercesystem/view/screen/auth/forget_password/verify_code_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/registration/verify_code_signup_screen.dart';
 import 'package:ecommercesystem/view/screen/home_screen.dart';
+import 'package:ecommercesystem/view/screen/item_screen.dart';
 import 'package:ecommercesystem/view/screen/language_screen.dart';
 import 'package:ecommercesystem/view/screen/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -73,6 +75,13 @@ class AppRouter {
         GoRoute(
           path: HomeScreen.path,
           builder: (context, state) => const HomeScreen(),
+        ),
+        GoRoute(
+          path: ItemScreen.path,
+          builder: (context, state) {
+            final categoryName = state.extra as CategoryModel;
+            return ItemScreen(category: categoryName);
+          },
         ),
       ],
     );
