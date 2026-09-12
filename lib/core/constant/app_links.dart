@@ -17,4 +17,5 @@ class AppLinks {
 
   //================ Items ==================//
   static const String itemsview = "$server/items/view.php";
+  static const String itemscategorview = "$server/items/category_view.php";
 }

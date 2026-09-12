@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 abstract class ItemsController extends GetxController {
   void initialData();
+  void getItems();
 }
 
 class ItemsControllerImpl extends ItemsController {
@@ -16,4 +17,9 @@ class ItemsControllerImpl extends ItemsController {
 
   @override
   void initialData() {}
+
+  @override
+  void getItems() {
+    // TODO: implement getItems
+  }
 }
