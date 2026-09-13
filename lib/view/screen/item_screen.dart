@@ -14,14 +14,14 @@ class ItemScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColours.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(
+              const SliverToBoxAdapter(
                 child: Row(
                   children: [
                     BackArrow(),
@@ -30,8 +30,8 @@ class ItemScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              SliverToBoxAdapter(child: SizedBox(height: 20)),
-              SilverItemsGrid(),
+              const SliverToBoxAdapter(child: SizedBox(height: 20)),
+              SilverItemsGrid(category: category),
             ],
           ),
         ),
