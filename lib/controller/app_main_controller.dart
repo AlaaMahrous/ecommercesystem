@@ -1,3 +1,4 @@
+import 'package:ecommercesystem/view/screen/favorite_screen.dart';
 import 'package:ecommercesystem/view/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +13,7 @@ class AppMainControllerImp extends AppMainController {
     const HomeScreen(),
     const Center(child: Text('settings 2')),
     const Center(child: Text('3')),
-    const Center(child: Text('4')),
+    const FavoriteScreen(),
   ];
   @override
   void changePage(int i) {

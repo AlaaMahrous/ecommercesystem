@@ -11,6 +11,7 @@ class ItemModel {
   final int itemDiscount;
   final String itemDate;
   final int itemCategory;
+  final bool isFavorite;
 
   ItemModel({
     required this.itemId,
@@ -25,33 +26,26 @@ class ItemModel {
     required this.itemDiscount,
     required this.itemDate,
     required this.itemCategory,
+    required this.isFavorite,
   });
 
   factory ItemModel.fromJson(Map<String, dynamic> json) {
     return ItemModel(
       itemId: int.parse(json['item_id'].toString()),
-
       itemName: json['item_name'],
-
       itemNameAr: json['item_name_ar'],
-
       itemDesc: json['item_desc'],
-
       itemDescAr: json['item_desc_ar'],
-
       itemImage: json['item_image'],
-
       itemCount: int.parse(json['item_count'].toString()),
-
       itemActive: int.parse(json['item_active'].toString()),
-
       itemPrice: double.parse(json['item_price'].toString()),
-
       itemDiscount: int.parse(json['item_discount'].toString()),
-
       itemDate: json['item_date'],
-
       itemCategory: int.parse(json['item_category'].toString()),
+
+      // API بيرجع 0 أو 1
+      isFavorite: json['isFavorite'].toString() == '1',
     );
   }
 
@@ -69,6 +63,7 @@ class ItemModel {
       'item_discount': itemDiscount,
       'item_date': itemDate,
       'item_category': itemCategory,
+      'isFavorite': isFavorite ? 1 : 0,
     };
   }
 }

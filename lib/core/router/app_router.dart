@@ -10,6 +10,7 @@ import 'package:ecommercesystem/view/screen/auth/forget_password/success_reset_s
 import 'package:ecommercesystem/view/screen/auth/registration/success_signup_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/forget_password/verify_code_screen.dart';
 import 'package:ecommercesystem/view/screen/auth/registration/verify_code_signup_screen.dart';
+import 'package:ecommercesystem/view/screen/favorite_screen.dart';
 import 'package:ecommercesystem/view/screen/home_screen.dart';
 import 'package:ecommercesystem/view/screen/item_details_screen.dart';
 import 'package:ecommercesystem/view/screen/item_screen.dart';
@@ -91,6 +92,10 @@ class AppRouter {
             final item = state.extra as ItemModel;
             return ItemDetailsScreen(item: item);
           },
+        ),
+        GoRoute(
+          path: FavoriteScreen.path,
+          builder: (context, state) => const FavoriteScreen(),
         ),
       ],
     );

@@ -1,21 +1,19 @@
-import 'package:ecommercesystem/controller/items_controller.dart';
+import 'package:ecommercesystem/controller/favorite_controller.dart';
 import 'package:ecommercesystem/core/constant/app_colours.dart';
 import 'package:ecommercesystem/core/constant/app_images.dart';
 import 'package:ecommercesystem/core/functions/translate_database.dart';
-import 'package:ecommercesystem/data/model/category_model.dart';
 import 'package:ecommercesystem/view/screen/item_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-class SilverItemsGrid extends StatelessWidget {
-  const SilverItemsGrid({super.key, required this.category});
-  final CategoryModel category;
+class SilverFavoriteGrid extends StatelessWidget {
+  const SilverFavoriteGrid({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ItemsControllerImpl>(
-      init: ItemsControllerImpl(category: category),
+    return GetBuilder<FavoriteControllerImpl>(
+      init: FavoriteControllerImpl(),
       builder: (controller) {
         return SliverGrid(
           delegate: SliverChildBuilderDelegate(
@@ -131,10 +129,8 @@ class SilverItemsGrid extends StatelessWidget {
                                       },
                                       padding: const EdgeInsets.all(8),
                                       constraints: const BoxConstraints(),
-                                      icon: Icon(
-                                        item.isFavorite
-                                            ? Icons.favorite
-                                            : Icons.favorite_border,
+                                      icon: const Icon(
+                                        Icons.favorite,
                                         color: AppColours.pPurple,
                                         size: 21,
                                       ),

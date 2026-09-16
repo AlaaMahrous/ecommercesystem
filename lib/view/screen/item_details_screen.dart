@@ -27,12 +27,36 @@ class ItemDetailsScreen extends StatelessWidget {
                 spacing: 22,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.itemName,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        item.itemName,
+                        style: const TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+
+                      IconButton(
+                        onPressed: () {
+                          if (item.isFavorite) {
+                            // remove.php
+                          } else {
+                            // add.php
+                          }
+                        },
+                        padding: const EdgeInsets.all(8),
+                        constraints: const BoxConstraints(),
+                        icon: Icon(
+                          item.isFavorite
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: AppColours.pPurple,
+                          size: 30,
+                        ),
+                      ),
+                    ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
