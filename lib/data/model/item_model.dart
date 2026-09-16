@@ -11,7 +11,7 @@ class ItemModel {
   final int itemDiscount;
   final String itemDate;
   final int itemCategory;
-  final bool isFavorite;
+  bool isFavorite;
 
   ItemModel({
     required this.itemId,
@@ -43,8 +43,6 @@ class ItemModel {
       itemDiscount: int.parse(json['item_discount'].toString()),
       itemDate: json['item_date'],
       itemCategory: int.parse(json['item_category'].toString()),
-
-      // API بيرجع 0 أو 1
       isFavorite: json['isFavorite'].toString() == '1',
     );
   }

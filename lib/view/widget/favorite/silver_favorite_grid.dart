@@ -120,17 +120,15 @@ class SilverFavoriteGrid extends StatelessWidget {
                                     ),
 
                                     IconButton(
-                                      onPressed: () {
-                                        if (item.isFavorite) {
-                                          // remove.php
-                                        } else {
-                                          // add.php
-                                        }
+                                      onPressed: () async {
+                                        await controller.toggleFavorite(item);
                                       },
                                       padding: const EdgeInsets.all(8),
                                       constraints: const BoxConstraints(),
-                                      icon: const Icon(
-                                        Icons.favorite,
+                                      icon: Icon(
+                                        item.isFavorite
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
                                         color: AppColours.pPurple,
                                         size: 21,
                                       ),
