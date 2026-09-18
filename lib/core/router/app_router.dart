@@ -16,6 +16,7 @@ import 'package:ecommercesystem/view/screen/item_details_screen.dart';
 import 'package:ecommercesystem/view/screen/item_screen.dart';
 import 'package:ecommercesystem/view/screen/language_screen.dart';
 import 'package:ecommercesystem/view/screen/onboarding_screen.dart';
+import 'package:ecommercesystem/view/screen/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -96,6 +97,10 @@ class AppRouter {
         GoRoute(
           path: FavoriteScreen.path,
           builder: (context, state) => const FavoriteScreen(),
+        ),
+        GoRoute(
+          path: SettingsScreen.path,
+          builder: (context, state) => const SettingsScreen(),
         ),
       ],
     );
